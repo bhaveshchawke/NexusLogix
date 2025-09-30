@@ -1,0 +1,135 @@
+/* Basic Setup (Required for this section) */
+:root {
+  --primary: #068cf9;
+  --text-white: #ffffff;
+  --text-white-80: rgba(255, 255, 255, 0.8);
+  --text-white-60: rgba(255, 255, 255, 0.6);
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  margin: 0;
+  background: #000;
+}
+
+/* Main Hero Section Styles */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-content dotlottie-wc {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw; /* Use viewport width to fill the screen */
+  height: 100vh; /* Use viewport height to fill the screen */
+  z-index: -1;
+  opacity: 0.6; /* Increased opacity */
+  justify-content: center;
+  color: aliceblue;
+}
+
+
+
+/* Heading and Subheading Styles */
+.hero-heading {
+  font-size: 2.25rem; /* 36px */
+  font-weight: 700;
+  color: var(--text-white);
+  line-height: 1.2;
+}
+
+.hero-heading .highlight-text {
+  color: var(--primary);
+}
+
+.hero-subheading {
+  margin-top: 1rem;
+  font-size: 1.125rem; /* 18px */
+  color: var(--text-white-80);
+  max-width: 42rem; /* 672px */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Tracking Form Styles */
+.tracking-form-container {
+  margin-top: 2.5rem;
+  max-width: 36rem; /* 576px */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tracking-form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* Glassmorphism effect for the form */
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.5rem; /* rounded-lg */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  overflow: hidden;
+}
+
+.tracking-input {
+  width: 100%;
+  background: transparent;
+  color: var(--text-white);
+  padding: 1rem 1.5rem;
+  border: none;
+  outline: none; /* Removes the focus ring */
+  font-size: 1rem;
+}
+
+.tracking-input::placeholder {
+  color: var(--text-white-60);
+}
+
+.tracking-button {
+  background-color: var(--primary);
+  color: var(--text-white);
+  font-weight: 700;
+  padding: 1rem 2rem;
+  margin: 0.25rem; /* m-1 */
+  border-radius: 0.5rem; /* rounded-lg */
+  transition: background-color 0.3s;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap; /* Prevents text wrapping */
+}
+
+.tracking-button:hover {
+  background-color: rgba(6, 140, 249, 0.9); /* primary/90 */
+}
+
+/* Responsive Styles for Desktop (md:) */
+@media (min-width: 768px) {
+  .hero-heading {
+    font-size: 3.75rem; /* 60px */
+  }
+}

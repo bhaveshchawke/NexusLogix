@@ -1,0 +1,30 @@
+<%- include('../partials/head.ejs') %>
+<main class="hero-section">
+  <div class="hero-background"></div>
+
+  <div class="hero-content">
+    <dotlottie-wc
+      src="https://lottie.host/5e21eb1b-5c3a-4c44-a72e-677719e770be/QkToIPkBt1.lottie"
+      autoplay
+      loop
+    ></dotlottie-wc>
+    <h1 class="hero-heading">
+      Your City, Delivered in <span class="highlight-text">Hours</span>
+    </h1>
+    <p class="hero-subheading">
+      Premium same-day delivery for urban businesses, powered by our intelligent
+      routing technology.
+    </p>
+    <div class="tracking-form-container">
+      <form class="tracking-form">
+        <input
+          class="tracking-input"
+          placeholder="Enter Tracking ID..."
+          type="text"
+        />
+        <button class="tracking-button" type="submit">Track Parcel</button>
+      </form>
+    </div>
+  </div>
+</main>
+<%- include('../partials/footer.ejs') %>
