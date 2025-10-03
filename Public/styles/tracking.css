@@ -251,3 +251,35 @@
     width: 100%;
   }
 }
+
+@media (max-width: 480px) {
+    .tracking-section {
+        padding: 6rem 1rem 4rem;
+    }
+
+    .tracking-form-wrapper {
+        padding: 1.5rem;
+    }
+
+    .section-heading {
+        font-size: 1.5rem;
+    }
+
+    .status-header h3 {
+        font-size: 1.2rem;
+    }
+
+    .status-timeline {
+        padding-left: 15px;
+    }
+
+    .timeline-icon {
+        left: -28px;
+        width: 35px;
+        height: 35px;
+    }
+
+    .timeline-item {
+        padding-left: 25px;
+    }
+}

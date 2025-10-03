@@ -78,3 +78,22 @@
 .status-available { background-color: #16a34a; color: white; } /* green */
 .status-on-trip { background-color: #f97316; color: white; } /* orange */
 .status-maintenance, .status-offline { background-color: #ef4444; color: white; } /* red */
+
+@media (max-width: 768px) {
+    .fleet-section {
+        padding-top: 8rem;
+    }
+
+    .fleet-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .fleet-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .fleet-form-card {
+        padding: 1.5rem;
+    }
+}

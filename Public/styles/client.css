@@ -43,3 +43,11 @@
 .form-footer-text a:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 480px) {
+    .form-options {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+    }
+}
