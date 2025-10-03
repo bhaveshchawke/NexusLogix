@@ -280,7 +280,7 @@
     }
 
     .timeline-icon {
-        left: -24.5px; /* (35/2 width) + (2px border) + (15px padding-left of parent) - (25px padding-left of item) */
+        left: -43.5px; /* (35/2 icon width) + (25px item padding) + (1px border) */
         width: 35px;
         height: 35px;
     }

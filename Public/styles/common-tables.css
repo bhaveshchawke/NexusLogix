@@ -30,6 +30,7 @@
     text-align: left;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     margin-bottom: 2rem; /* Added for spacing */
+    overflow-x: auto; /* Makes the container scrollable if table overflows */
 }
 
 .fleet-table-container h2 {
