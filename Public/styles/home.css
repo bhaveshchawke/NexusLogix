@@ -150,15 +150,6 @@
 
 /* Styles for mobile screens (max-width: 768px). */
 @media (max-width: 768px) {
-  /* Hide the desktop navigation and actions by default on mobile. */
-  .main-nav, .header-actions {
-    display: none; /* Hide nav links and actions on mobile by default */
-  }
-
-  /* Show the hamburger menu icon on mobile. */
-  .mobile-nav-toggle {
-    display: block; /* Show hamburger menu on mobile */
-  }
   /* Stack the tracking form elements vertically on mobile. */
   .tracking-form {
     flex-direction: column; /* Stack form elements vertically */
