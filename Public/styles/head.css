@@ -1,4 +1,5 @@
-/* Basic Setup (Required for Header) */
+/* --- Root Variables and Basic Setup --- */
+/* These variables define the color palette for the entire site. */
 :root {
   --primary: #068cf9;
   --primary-glow: rgba(6, 140, 249, 0.3);
@@ -9,12 +10,20 @@
   --background: #0f172a;
 }
 
-body {
-  font-family: 'Space Grotesk', sans-serif; /* New font */
-  margin: 0;
+/* Universal Box Sizing - This is a critical reset. It makes layout math intuitive. */
+/* Now, an element's width and height include its padding and border. */
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
-/* Header Styles */
+/* Basic body styling, setting the default font and removing default margin. */
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  margin: 0;
+  background-color: var(--background); /* Set a global dark background */
+}
+
+/* --- Main Header Styles --- */
 .site-header {
   position: fixed;
   top: 0;
@@ -28,6 +37,7 @@ body {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Container to center the header content and add padding. */
 .header-container {
   max-width: 1280px;
   margin: 0 auto;
@@ -37,7 +47,7 @@ body {
   padding: 1rem 1.5rem; /* py-4 px-6 */
 }
 
-/* Logo Styles */
+/* --- Logo Styles --- */
 .logo-link {
   display: flex;
   align-items: center;
@@ -57,11 +67,12 @@ body {
   color: var(--text-white);
 }
 
-/* Navigation Styles */
+/* --- Desktop Navigation Styles --- */
 .main-nav {
   display: none; /* Hidden on mobile */
 }
 
+/* Individual navigation links. */
 .nav-link {
   font-size: 0.875rem; /* text-sm */
   font-weight: 500;    /* font-medium */
@@ -74,7 +85,7 @@ body {
   color: var(--text-white);
 }
 
-/* Client Login Button Styles */
+/* --- Action Button Styles (Login, Dashboard, etc.) --- */
 .client-login-btn {
   background-color: var(--primary);
   color: var(--text-white);
@@ -92,7 +103,7 @@ body {
   background-color: rgba(6, 140, 249, 0.9); /* primary/90 */
 }
 
-/* "Add Customer" Button Specific Styles */
+/* Specific overrides for different action buttons. */
 .add-customer-btn {
   background-color: green;
   color: white;
@@ -102,31 +113,95 @@ body {
   background-color: var(--primary);
   color: var(--text-white);
 }
+
 .logout-btn {
   background: transparent;
   border: 1px solid var(--primary);
   cursor: pointer;
 }
 
-/* Action Buttons Container */
+/* Container for all action buttons on the right side of the header. */
 .header-actions {
   display: flex;
   align-items: center;
   gap: 0.75rem; /* space between buttons */
-  flex-wrap: wrap; /* Allow buttons to wrap to the next line */
-  justify-content: flex-end; /* Align buttons to the right */
 }
 
-/* Ensure form inside flex container behaves correctly */
+/* Reset margin for forms used for buttons (like the logout form). */
 .header-actions form {
   margin: 0; /* Remove default form margin */
 }
 
-/* Responsive Styles for Desktop (md:) */
+/* --- Desktop-specific Styles --- */
 @media (min-width: 768px) {
   .main-nav {
     display: flex;
     align-items: center;
     gap: 2rem; /* gap-8 */
   }
+}
+
+/* --- Mobile Navigation Styles --- */
+/* These styles apply when the mobile navigation is opened (body has .mobile-nav-active class). */
+@media (max-width: 768px) {
+  /* Adjust logo text on small screens to prevent overflow. */
+  .logo-text {
+    font-size: 1rem; /* Reduce logo font size on mobile */
+    white-space: normal; /* Allow logo text to wrap if needed */
+  }
+
+  .mobile-nav-active .main-nav,
+  .mobile-nav-active .header-actions {
+    /* Show the navigation and action buttons when the menu is active. */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .mobile-nav-active .main-nav {
+    padding: 2rem;
+    gap: 1.5rem;
+  }
+
+  .mobile-nav-active .header-actions {
+    padding: 0 2rem 2rem;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  /* The header becomes a full-screen overlay when the mobile nav is active. */
+  .mobile-nav-active .site-header {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.98); /* Darker background when open */
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 5rem; /* Space for close button */
+    overflow-y: auto;
+  }
+
+  /* The container inside the overlay. */
+  .mobile-nav-active .header-container {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Position the toggle button (hamburger/close icon) in the top right. */
+  .mobile-nav-active .mobile-nav-toggle {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.5rem;
+  }
+
+  /* Animate the hamburger icon into a close (X) icon. */
+  .mobile-nav-active .hamburger-icon {
+    background: transparent; /* Hide middle line */
+  }
+  .mobile-nav-active .hamburger-icon::before { transform: rotate(45deg) translate(5px, 6px); }
+  .mobile-nav-active .hamburger-icon::after { transform: rotate(-45deg) translate(5px, -6px); }
 }

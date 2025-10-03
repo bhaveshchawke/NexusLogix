@@ -74,9 +74,10 @@
     font-weight: 600;
     background-color: #4b5563; /* gray */
     color: #e5e7eb;
+    white-space: nowrap; /* Prevents text from wrapping */
 }
 .status-available { background-color: #16a34a; color: white; } /* green */
-.status-on-trip { background-color: #f97316; color: white; } /* orange */
+.status-on-trip { background-color: #d97706; color: white; } /* A darker, richer orange */
 .status-maintenance, .status-offline { background-color: #ef4444; color: white; } /* red */
 
 @media (max-width: 768px) {

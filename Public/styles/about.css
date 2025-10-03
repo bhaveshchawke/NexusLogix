@@ -134,27 +134,8 @@
     .story-container {
         grid-template-columns: 1fr;
     }
-}
-
-@media (max-width: 768px) {
-    .about-hero {
-        padding: 8rem 1rem 3rem;
-    }
-
-    .about-hero-subtitle {
-        font-size: 1rem;
-    }
-
-    .about-story,
-    .about-team {
-        padding: 4rem 1rem;
-    }
-
-    .story-container {
-        gap: 2rem;
-    }
-
-    .member-info {
-        padding: 1rem;
+    .team-member {
+        max-height: 400px; /* Prevent team member cards from being too tall */
+        transform: none; /* Disable hover effect on mobile */
     }
 }

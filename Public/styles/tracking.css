@@ -227,6 +227,11 @@
   justify-content: center;
   align-items: center;
 }
+.tracking-animation dotlottie-wc {
+  max-width: 100%;
+  width: 400px;
+  height: auto;
+}
 
 /* === Responsive Tweaks === */
 @media (max-width: 768px) {
@@ -239,7 +244,8 @@
   }
 
   .tracking-form-wrapper {
-    padding: 2rem;
+    padding: 2rem 1rem; /* Add more vertical padding */
+    border: none; /* Remove border on mobile */
   }
 
   .tracking-form-page {
@@ -248,23 +254,23 @@
 
   .tracking-form-page input,
   .tracking-form-page button {
-    width: 100%;
+    width: 100%; /* Use full width within the flex column */
   }
 }
 
 @media (max-width: 480px) {
     .tracking-section {
-        padding: 6rem 1rem 4rem;
+        padding: 8rem 1rem 4rem;
     }
 
     .tracking-form-wrapper {
         padding: 1.5rem;
     }
 
-    .section-heading {
-        font-size: 1.5rem;
+    .tracking-results-grid {
+        padding: 1.5rem;
     }
-
+    
     .status-header h3 {
         font-size: 1.2rem;
     }
@@ -274,12 +280,12 @@
     }
 
     .timeline-icon {
-        left: -28px;
+        left: -24.5px; /* (35/2 width) + (2px border) + (15px padding-left of parent) - (25px padding-left of item) */
         width: 35px;
         height: 35px;
     }
 
     .timeline-item {
-        padding-left: 25px;
+        padding-left: 25px; /* Make space for icon */
     }
 }

@@ -66,28 +66,7 @@
     transform: scale(1.05) translateY(-3px);
     box-shadow: 0 8px 40px var(--primary-glow);
 }
-dotlottie-wc{
-    height: 500px; /* Set a fixed height */
-    width: 800px;  /* Set a fixed width */
-}
-
-@media (max-width: 768px) {
-    .error-page-main {
-        min-height: calc(100vh - 10rem);
-    }
-
-    .error-title {
-        margin-top: -1rem;
-        font-size: 1.5rem;
-    }
-
-    dotlottie-wc {
-        width: 100%;
-        height: auto;
-    }
-
-    .error-home-link:hover {
-        transform: none;
-        box-shadow: 0 4px 30px var(--primary-glow);
-    }
+.error-container dotlottie-wc {
+    max-width: 100%;
+    width: 500px;
 }

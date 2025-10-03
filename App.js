@@ -1,7 +1,7 @@
-require('dotenv').config(); // Sabse upar isko add karein
+require('dotenv').config(); // Load environment variables from .env file
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 const path = require('path');
 const mongoose=require('mongoose');
 const rootDir = require('./utils/pathUtil');
@@ -10,7 +10,10 @@ const hostRoutes = require('./Routes/hostRoutes');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
 
+
+
 const MONGO_URL = process.env.MONGO_URL;
+
 
 app.set('view engine', 'ejs')
 app.set('views', 'views');
@@ -27,7 +30,7 @@ app.use(express.static(path.join(rootDir, 'public')));
 
 
 app.use(session({
-  secret: process.env.SESSION_SECRET,
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: false, // Don't save empty sessions
   store: sessionStore

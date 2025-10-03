@@ -1,58 +1,114 @@
-# NexusLogix
-this is a NexusLogix website
-# Urban Express Logistics - Premium Logistics Web Page
+# Urban Express Logistics - A Modern Logistics & Shipment Tracking Platform
 
 ## 1. Project Overview
 
-This project is a premium, responsive logistics webpage designed for "Urban Express Logistics," a fictional company specializing in same-day urban deliveries. The user interface is modern, futuristic, and built with a dark theme, featuring advanced animations and interactive elements to provide a high-quality user experience.
+This project is a full-featured, responsive web application for a fictional logistics company, "Urban Express Logistics". It provides a premium, dark-themed user interface for customers to track shipments and for administrators (hosts) to manage core logistics operations. The application is built with a modern tech stack, focusing on a dynamic, interactive, and professional user experience across all devices.
 
-This project was completed as part of the internship task for ElysiumX Innovation.
+## 2. Features
 
-## 2. Technologies Used
+*   **Modern & Professional UI:** A dark-themed, futuristic design with "glassmorphism" effects and glowing elements for a premium feel.
+*   **Fully Responsive Design:** The entire application is optimized for a seamless experience on desktop, tablet, and mobile devices.
+*   **Shipment Tracking:** Customers can track their shipments in real-time using a unique tracking ID, which displays a visual timeline of the package's journey.
+*   **User Authentication:** Secure login, registration, and session management for both clients and hosts (administrators).
+*   **Role-Based Access Control:** The application differentiates between regular clients and hosts, providing an exclusive dashboard and administrative features for hosts.
+*   **Admin Dashboard:** A dedicated dashboard for hosts to:
+    *   Create and add new shipments.
+    *   View and manage all user-submitted contact messages.
+    *   Oversee fleet management, including driver status (Available, On-trip, etc.).
+*   **Dynamic Content:** Built with Node.js, Express, and EJS for dynamic page rendering and a modular structure using partials.
+*   **Interactive Animations:** Smooth entrance animations and high-quality Lottie animations enhance user engagement and provide a polished look.
 
-The project is built using the following technologies as specified in the task brief:
+## 3. Technologies Used
 
-* **Backend:** Node.js, Express.js
-* **Templating Engine:** EJS (Embedded JavaScript) for dynamic rendering and partials.
-* **Frontend:** HTML5, CSS3, JavaScript (ES6)
-* **Animation Libraries:**
-    * **LottieFiles:** For high-quality vector animations in the hero and services sections.
-    * **CSS Animations:** For entrance effects and hover transitions.
-* **Version Control:** Git & GitHub
+The project is built using the following technologies:
 
-## 3. Setup and Installation
+*   **Backend:** Node.js, Express.js
+*   **Templating Engine:** EJS (Embedded JavaScript) for server-side rendering and creating reusable partials.
+*   **Frontend:** HTML5, CSS3, JavaScript (ES6)
+*   **Authentication:** Express Session, `connect-mongodb-session` for secure user authentication and session management.
+*   **Database:** MongoDB with Mongoose for data modeling and persistence.
+*   **Animation:** LottieFiles for high-quality vector animations.
+*   **Version Control:** Git & GitHub
+
+## 4. Setup and Installation
 
 To run this project locally, please follow these steps:
 
 1.  **Clone the repository:**
     ```bash
-    git clone [Aapke GitHub repository ka URL yahan paste karein]
+    git clone https://github.com/bhaveshchawke/NexusLogix.git
     ```
 2.  **Navigate to the project directory:**
     ```bash
-    cd UrbanExpress
+    cd NexusLogix
     ```
 3.  **Install dependencies:**
     ```bash
     npm install
     ```
-4.  **Start the server:**
-    ```bash
-    npm start
+4.  **Set up environment variables:**
+    Create a `.env` file in the root directory and add the following variables:
     ```
-    (Note: Yeh command chalane ke liye, aapko `package.json` mein "scripts" ke andar `"start": "node app.js"` add karna hoga).
+    MONGO_URL="your_mongodb_connection_string"
+    SECRET="your_session_secret_key"
+    ```
+5.  **Start the server:**
+    ```bash
+    npm run dev
+    ```
+    (This uses `nodemon` to automatically restart the server on file changes).
 
-5.  **Open your browser** and go to `http://localhost:3000`.
+6.  **Open your browser** and go to `http://localhost:3000` (or the port specified in your `app.js`).
 
-## 4. Features
+## 5. Usage and Access Control
 
-* **Modern & Professional UI:** A dark-themed, futuristic design with a "glassmorphism" header and glowing elements.
-* **Fully Responsive Design:** The website is optimized for desktop, tablet, and mobile devices. The mobile menu is fully functional.
-* **Interactive Animations:** Smooth entrance animations for text and elements, and Lottie animations for a premium feel.
-* **Modular Codebase:** The code is organized into reusable EJS partials (head, header, footer) for easy maintenance.
+The application has two main user roles: **Client** and **Host** (Admin).
 
-## 5. Self-Evaluation
+### Accessing Host Features
+To access the administrative (host) pages, you need to log in with a specific user account that is designated as a host. In the current implementation, this is determined by the user's email address upon login.
 
-* **Sections Completed:** Home Page, Services Page, 404 Page, and fully functional mobile navigation.
-* **Challenges Encountered:** [Aap yahan likhein ki aapko kya challenge aaya, jaise 'Pure CSS mein responsive design banana shuru mein challenging tha, lekin media queries se aasan ho gaya.']
-* **Key Learning Points:** [Aap yahan likhein ki aapne kya naya seekha, jaise 'Is project se maine EJS partials, CSS variables, aur modern UI design ke baare mein seekha.']
+1.  Navigate to the `controllers/storeController.js` file.
+2.  Find the `postLogin` function.
+3.  Inside this function, locate the logic that checks the user's email. It will look similar to this:
+    ```javascript
+    if (user.email === 'host@example.com') {
+      req.session.isHost = true;
+    }
+    ```
+4.  You can change `'host@example.com'` to any email you want to use for the host account. After registering and logging in with that email, you will have access to all host features.
+
+## 6. Application Flow (How It Works)
+
+1.  **User Interaction:**
+    *   A user lands on the homepage and can browse public pages like Services, About, and Contact.
+    *   They can use the tracking form on the homepage or the dedicated tracking page to look up a shipment by its ID.
+    *   If the shipment is found, a detailed status page with a visual timeline is displayed.
+
+2.  **Authentication:**
+    *   Users can register for a new account or log in with existing credentials.
+    *   The session is managed using `express-session`, and session data is stored in MongoDB.
+
+3.  **Host (Admin) Workflow:**
+    *   When a user with the designated "host" email logs in, the system sets an `isHost` flag in their session.
+    *   The UI dynamically updates to show additional navigation links in the header, such as "Add Shipment", "View Messages", and "Fleet Mgmt".
+    *   The host can access a protected dashboard to perform administrative tasks, which are inaccessible to regular clients.
+
+## 7. Pages and Functionality
+*   **Public Pages:**
+    *   `Home`: Main landing page with a tracking form.
+    *   `Services`: Details of the services offered.
+    *   `Tracking`: A dedicated page for shipment tracking.
+    *   `About Us`: Information about the company and team.
+    *   `Contact Us`: A functional form for users to send messages.
+    *   `Pricing`: Details on different pricing plans.
+*   **Authentication Pages:**
+    *   `Client Login`: For existing users to log in.
+    *   `Register`: For new users to create an account.
+*   **User/Host Pages (Protected):**
+    *   `Dashboard`: A central hub for logged-in users.
+    *   `Add Shipment`: (Host only) A form to create new shipments.
+    *   `View Messages`: (Host only) Displays all messages from the contact form.
+    *   `Fleet Management`: (Host only) A view to manage drivers and vehicles.
+*   **Utility Pages:**
+    *   `404 Not Found`: A custom, animated 404 error page.
+    *   `Shipment Success`: A confirmation page displayed after a new shipment is created.

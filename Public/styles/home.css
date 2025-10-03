@@ -1,27 +1,24 @@
-/* Basic Setup (Required for this section) */
+/* --- Root Variables --- */
+/* Defines common colors for this section. */
 :root {
-  /* ... baki colors ... */
-  --text-white: #ffffff; /* Yeh bilkul safed hai */
-  --text-muted: rgba(255, 255, 255, 0.85); /* Yeh 85% safed hai (halka gray jaisa) */
+  --text-white: #ffffff; /* Pure white */
+  --text-muted: rgba(255, 255, 255, 0.85); /* 85% white, slightly muted */
 }
 
-body {
-  font-family: 'Space Grotesk', sans-serif;
-  margin: 0;
-  background: #000;
-}
-
-/* Main Hero Section Styles */
+/* --- Main Hero Section --- */
+/* This is the main container for the top section of the homepage. */
 .hero-section {
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
+  height: auto; /* Allow section to grow */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 1rem;
+  padding: 8rem 1rem 5rem;
 }
 
+/* A container for a background image or color, sits behind the content. */
 .hero-background {
   position: absolute;
   top: 0;
@@ -32,18 +29,20 @@ body {
   background-position: center;
 }
 
+/* This holds the main text, form, and the background Lottie animation. */
 .hero-content {
   position: relative;
   z-index: 1;
   margin-bottom: 200px 0;
 }
 
+/* The Lottie animation that plays in the background of the hero section. */
 .hero-content dotlottie-wc {
   position: absolute;
-  top: 65%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100vw; /* Use viewport width to fill the screen */
+  width: 100%; /* Use parent width to avoid overflow */
   height: 100vh; /* Use viewport height to fill the screen */
   z-index: -1;
   opacity: 0.6; /* Increased opacity */
@@ -51,6 +50,7 @@ body {
   color: aliceblue;
 }
 
+/* The main paragraph of text below the hero heading and form. */
 .main-content {
   margin-top: 3rem; /* Add some space above the paragraph */
   max-width: 48rem; /* Limit the width for better readability */
@@ -62,8 +62,7 @@ body {
 }
 
 
-
-/* Heading and Subheading Styles */
+/* --- Hero Heading and Subheading Styles --- */
 .hero-heading {
   font-size: 2.25rem; /* 36px */
   font-weight: 700;
@@ -84,7 +83,8 @@ body {
   margin-right: auto;
 }
 
-/* Tracking Form Styles */
+/* --- Tracking Form Styles --- */
+/* Container for the tracking form. */
 .tracking-form-container {
   margin-top: 2.5rem;
   max-width: 36rem; /* 576px */
@@ -92,6 +92,7 @@ body {
   margin-right: auto;
 }
 
+/* The form itself, with a glass-like effect. */
 .tracking-form {
   position: relative;
   display: flex;
@@ -106,6 +107,7 @@ body {
   overflow: hidden;
 }
 
+/* The input field for the tracking ID. */
 .tracking-input {
   width: 100%;
   background: transparent;
@@ -120,6 +122,7 @@ body {
   color: var(--text-white-60);
 }
 
+/* The "Track" button. */
 .tracking-button {
   background-color: var(--primary);
   color: var(--text-white);
@@ -137,45 +140,67 @@ body {
   background-color: rgba(6, 140, 249, 0.9); /* primary/90 */
 }
 
-/* Responsive Styles for Desktop (md:) */
+/* --- Responsive Styles --- */
+/* Larger heading on desktop. */
 @media (min-width: 768px) {
   .hero-heading {
     font-size: 3.75rem; /* 60px */
   }
 }
 
-/* Responsive Styles for Mobile */
-@media (max-width: 767px) {
-  .hero-heading {
-    font-size: 2rem; /* 32px */
+/* --- Mobile Navigation Toggle (Hamburger Menu) --- */
+/* This is the button that appears on mobile to open the navigation. */
+.mobile-nav-toggle {
+  display: none; /* Hide on desktop */
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1001; /* Ensure it's above other elements */
+}
+
+/* The three lines of the hamburger icon. */
+.hamburger-icon {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-white);
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.hamburger-icon::before,
+.hamburger-icon::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: var(--text-white);
+  left: 0;
+  transition: transform 0.3s ease;
+}
+
+.hamburger-icon::before {
+  top: -8px;
+}
+
+.hamburger-icon::after {
+  bottom: -8px;
+}
+
+/* Styles for mobile screens (max-width: 768px). */
+@media (max-width: 768px) {
+  /* Hide the desktop navigation and actions by default on mobile. */
+  .main-nav, .header-actions {
+    display: none; /* Hide nav links and actions on mobile by default */
   }
 
-  .hero-subheading {
-    font-size: 1rem; /* 16px */
+  /* Show the hamburger menu icon on mobile. */
+  .mobile-nav-toggle {
+    display: block; /* Show hamburger menu on mobile */
   }
-
+  /* Stack the tracking form elements vertically on mobile. */
   .tracking-form {
-    flex-direction: column;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    backdrop-filter: none;
-  }
-
-  .tracking-input {
-    width: 100%;
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 0.5rem;
-    margin-bottom: 1rem;
-  }
-
-  .tracking-button {
-    width: 100%;
-    padding: 1rem;
-  }
-
-  .hero-content dotlottie-wc {
-    top: 50%;
+    flex-direction: column; /* Stack form elements vertically */
+    gap: 0.5rem;
   }
 }

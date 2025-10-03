@@ -102,7 +102,7 @@
         grid-template-columns: 1fr;
     }
     .learn-more-lottie {
-        height: 300px;
+        height: auto; /* Let it scale naturally */
     }
     .learn-more-content .section-heading,
     .learn-more-content .section-subheading {

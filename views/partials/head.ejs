@@ -24,6 +24,20 @@
     <link href="/styles/helpCenter.css" rel="stylesheet" />
 </head>
   <body>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+        const body = document.body;
+    
+        if (mobileNavToggle) {
+          mobileNavToggle.addEventListener('click', function () {
+            body.classList.toggle('mobile-nav-active');
+            const isExpanded = body.classList.contains('mobile-nav-active');
+            this.setAttribute('aria-expanded', isExpanded);
+          });
+        }
+      });
+    </script>
 <header class="site-header">
     <div class="header-container">
         <a class="logo-link" href="/">
@@ -43,18 +57,26 @@
             <a class="nav-link" href="/about">About Us</a>
             <a class="nav-link" href="/contact">Contact Us</a>
         </nav>
+        <button class="mobile-nav-toggle" aria-controls="main-nav" aria-expanded="false">
+            <span class="sr-only">Menu</span>
+            <span class="hamburger-icon"></span>
+        </button>
         <div class="header-actions">
             <% if (isLoggedIn) { %>
+                <!-- If user is logged in, show Dashboard and Logout -->
                 <a class="client-login-btn" href="/dashboard">Dashboard</a>
                 <% if (isHost) { %>
+                    <!-- If user is a host, show additional admin buttons -->
                     <a class="client-login-btn add-customer-btn" href="/host/addShipment">Add Shipment</a>
                     <a class="client-login-btn add-customer-btn" href="/host/messages">View Messages</a>
                     <a class="client-login-btn add-customer-btn" href="/host/fleet-management">Fleet Mgmt</a>
                 <% } %>
                 <form action="/logout" method="POST">
+                    <!-- Logout Button -->
                     <button type="submit" class="client-login-btn logout-btn">Logout</button>
                 </form>
             <% } else { %>
+                <!-- If user is not logged in, show Client Login -->
                 <a class="client-login-btn" href="/clientLogin"> Client Login </a>
             <% } %>
         </div>
