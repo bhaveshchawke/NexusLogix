@@ -1,0 +1,23 @@
+<%- include('../partials/head.ejs') %>
+<link rel="stylesheet" href="/styles/404.css"> <!-- Reusing 404 styles for a consistent error page look -->
+
+<main class="error-page-main">
+    <section class="error-section">
+        <div class="error-container">
+            <h1 class="error-code">500</h1>
+            <h2 class="error-title">Internal Server Error</h2>
+            <p class="error-message">
+                Oops! Something went wrong on our end. We're working to fix it.
+            </p>
+            <p class="error-message">
+                Please try again later or contact support if the problem persists.
+            </p>
+            <div class="error-actions">
+                <a href="/" class="action-button">Go to Homepage</a>
+                <a href="/contact" class="action-button secondary-button">Contact Support</a>
+            </div>
+        </div>
+    </section>
+</main>
+
+<%- include('../partials/footer.ejs') %>

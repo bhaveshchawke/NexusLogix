@@ -1,0 +1,118 @@
+/* --- Learn More Page Styles --- */
+.learn-more-section {
+    padding: 10rem 2rem 6rem;
+    min-height: 100vh;
+}
+
+.learn-more-container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.learn-more-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* Content ko thoda zyada space */
+    gap: 4rem;
+    align-items: center;
+}
+
+.learn-more-lottie {
+    width: 100%;
+    height: 400px;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.learn-more-content .section-heading {
+    text-align: left;
+    margin-bottom: 1rem;
+    color: var(--text-white);
+}
+
+.section-subheading {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+
+.features-heading {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-white);
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Checkmark style */
+.feature-item::before {
+    content: '✔';
+    color: var(--primary);
+    font-size: 1.2rem;
+}
+
+/* Buttons */
+.back-button,
+.go-now-button {
+    display: inline-block;
+    margin-top: 2.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--primary);
+    padding: 0.8rem 1.5rem;
+    font-weight: 600;
+    color: var(--text-white);
+    transition: all 0.3s;
+    text-decoration: none;
+}
+
+.back-button:hover,
+.go-now-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px var(--primary-glow);
+}
+
+/* Go Now Button specifically */
+.go-now-button {
+    background-color: #28a745;
+}
+
+.go-now-button:hover {
+    background-color: #218838;
+}
+
+/* Responsive styles */
+@media (max-width: 900px) {
+    .learn-more-grid {
+        grid-template-columns: 1fr;
+    }
+    .learn-more-lottie {
+        height: 300px;
+    }
+    .learn-more-content .section-heading,
+    .learn-more-content .section-subheading {
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .back-button,
+    .go-now-button {
+        width: 100%;
+        text-align: center;
+    }
+}

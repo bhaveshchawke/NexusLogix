@@ -1,8 +1,12 @@
 /* Basic Setup (Required for Header) */
 :root {
   --primary: #068cf9;
+  --primary-glow: rgba(6, 140, 249, 0.3);
   --text-white: #ffffff;
   --text-white-80: rgba(255, 255, 255, 0.8);
+  --text-muted: rgba(255, 255, 255, 0.7);
+  --border-color: rgba(255, 255, 255, 0.15);
+  --background: #0f172a;
 }
 
 body {
@@ -76,14 +80,46 @@ body {
   color: var(--text-white);
   font-size: 0.875rem; /* text-sm */
   font-weight: 700;    /* font-bold */
-  padding: 0.5rem 1.5rem; /* px-6 py-2 */
+  padding: 0.6rem 1rem; /* Adjusted padding */
   border-radius: 0.5rem;  /* rounded-lg */
   transition: background-color 0.3s;
   text-decoration: none;
+  margin: 0;
+  white-space: nowrap; /* Prevents text from wrapping */
 }
 
 .client-login-btn:hover {
   background-color: rgba(6, 140, 249, 0.9); /* primary/90 */
+}
+
+/* "Add Customer" Button Specific Styles */
+.add-customer-btn {
+  background-color: green;
+  color: white;
+}
+
+.add-customer-btn:hover {
+  background-color: var(--primary);
+  color: var(--text-white);
+}
+.logout-btn {
+  background: transparent;
+  border: 1px solid var(--primary);
+  cursor: pointer;
+}
+
+/* Action Buttons Container */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* space between buttons */
+  flex-wrap: wrap; /* Allow buttons to wrap to the next line */
+  justify-content: flex-end; /* Align buttons to the right */
+}
+
+/* Ensure form inside flex container behaves correctly */
+.header-actions form {
+  margin: 0; /* Remove default form margin */
 }
 
 /* Responsive Styles for Desktop (md:) */

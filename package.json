@@ -4,16 +4,27 @@
   "description": "this is a NexusLogix website",
   "main": "App.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node App.js",
+    "dev": "nodemon App.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "connect-mongodb-session": "^5.0.0",
     "ejs": "^3.1.10",
-    "engine": "^1.0.0",
-    "express": "^5.1.0",
+    "express": "^4.21.2",
+    "express-session": "^1.18.2",
+    "express-validator": "^7.2.1",
+    "mongoose": "^8.18.3",
     "nodemon": "^3.1.10",
-    "path": "^0.12.7",
-    "view": "^1.1.1"
+    "path": "^0.12.7"
+  },
+  "nodemonConfig": {
+    "ext": "js,ejs,json",
+    "ignore": [
+      "sessions/"
+    ]
   }
 }

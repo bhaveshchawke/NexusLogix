@@ -1,0 +1,42 @@
+<%- include('../partials/head.ejs') %>
+
+<main>
+    <section class="fleet-section">
+        <div class="fleet-container anim-fade-up">
+            <h1 class="fleet-title">Client Messages</h1>
+            <p class="fleet-subtitle">Here are all the messages submitted through the contact form.</p>
+
+            <% if (messages.length > 0) { %>
+                <div class="fleet-table-container">
+                    <h2>All Messages (<%= messages.length %>)</h2>
+                    <table class="fleet-table">
+                        <thead>
+                            <tr>
+                                <th>From</th>
+                                <th>Email</th>
+                                <th>Subject</th>
+                                <th>Message</th>
+                                <th>Received On</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% messages.forEach(message => { %>
+                                <tr>
+                                    <td><%= message.fullName %></td>
+                                    <td><a href="mailto:<%= message.email %>"><%= message.email %></a></td>
+                                    <td><%= message.subject %></td>
+                                    <td><%= message.message %></td>
+                                    <td><%= new Date(message.createdAt).toLocaleString() %></td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            <% } else { %>
+                <p class="section-subheading">No messages have been submitted yet.</p>
+            <% } %>
+        </div>
+    </section>
+</main>
+
+<%- include('../partials/footer.ejs') %>

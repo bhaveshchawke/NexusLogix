@@ -1,0 +1,72 @@
+/* --- 404 Error Page Styles --- */
+
+.error-page-main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    /* We calculate the height to fill space between header and footer */
+    min-height: calc(100vh - 13rem); /* 5rem for header + 8rem approx for footer */
+    padding: 2rem;
+}
+
+.error-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.error-code {
+    font-size: clamp(6rem, 25vw, 12rem); /* Large, responsive font size */
+    font-weight: 900;
+    line-height: 1;
+    /* Re-using the same gradient effect as the hero heading for consistency */
+    background: linear-gradient(120deg, var(--text-white) 50%, var(--primary) 120%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 1rem rgba(0,123,255,0.2));
+}
+
+.error-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-white);
+    margin-top: -2rem; /* Pulls the title up slightly over the 404 */
+}
+
+.error-message {
+    font-size: 1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.error-home-link {
+    /* Styling this button like the hero CTA for consistency */
+    margin-top: 1rem;
+    border-radius: 0.5rem;
+    background-image: linear-gradient(to right, #007BFF, #0056b3);
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-white);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+    box-shadow: 0 4px 30px var(--primary-glow);
+}
+
+.error-home-link:hover {
+    transform: scale(1.05) translateY(-3px);
+    box-shadow: 0 8px 40px var(--primary-glow);
+}
+dotlottie-wc{
+    height: 500px; /* Set a fixed height */
+    width: 800px;  /* Set a fixed width */
+}

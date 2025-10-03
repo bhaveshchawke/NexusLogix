@@ -1,0 +1,80 @@
+/* --- Fleet Management Page Styles --- */
+.fleet-section {
+    padding-top: 10rem; /* Keep specific padding for this section */
+    min-height: 100vh;
+}
+
+.fleet-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3rem;
+}
+
+.fleet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+/* Form Card Styles */
+.fleet-form-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 2rem;
+    text-align: left;
+}
+
+.fleet-form-card h3 {
+    font-size: 1.25rem;
+    color: var(--text-white);
+    margin-bottom: 1.5rem;
+}
+
+.fleet-form .form-group {
+    margin-bottom: 1rem;
+}
+
+.fleet-form label {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+}
+
+.fleet-form .form-input {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+    color: var(--text-white);
+}
+
+.fleet-form .form-button {
+    width: 100%;
+    padding: 0.75rem;
+    border: none;
+    border-radius: 0.5rem;
+    background-color: var(--primary);
+    color: var(--text-white);
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+/* Status Badge Styles */
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    background-color: #4b5563; /* gray */
+    color: #e5e7eb;
+}
+.status-available { background-color: #16a34a; color: white; } /* green */
+.status-on-trip { background-color: #f97316; color: white; } /* orange */
+.status-maintenance, .status-offline { background-color: #ef4444; color: white; } /* red */

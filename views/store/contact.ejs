@@ -1,0 +1,79 @@
+<%- include('../partials/head.ejs') %>
+
+<main>
+  <section class="contact-section">
+    <div class="contact-container">
+      <!-- LEFT SIDE: Lottie Animation -->
+      <div class="contact-lottie">
+        <dotlottie-wc
+          src="https://lottie.host/c3de8ae5-3a3d-4353-9091-477ef7fc8928/RKXQiDtuZe.lottie"
+          autoplay
+          loop
+        ></dotlottie-wc>
+      </div>
+
+      <!-- RIGHT SIDE: Contact Form -->
+      <div class="contact-card">
+        <div class="contact-header">
+          <h1 class="section-heading">Get in Touch</h1>
+          <p class="section-subheading">
+            We'd love to hear from you. Fill out the form below and we'll get
+            back to you as soon as possible.
+          </p>
+        </div>
+
+        <% if (errorMessage) { %>
+        <div class="user-message user-message--error"><%= errorMessage %></div>
+        <% } %>
+
+        <form class="contact-form" action="/contact-submit" method="POST">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="fullName">Full Name</label>
+              <input
+                type="text"
+                id="fullName"
+                name="fullName"
+                class="form-input <%= validationErrors.find(e => e.path === 'fullName') ? 'invalid' : '' %>"
+                value="<%= oldInput.fullName || '' %>"
+              />
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                class="form-input <%= validationErrors.find(e => e.path === 'email') ? 'invalid' : '' %>"
+                value="<%= oldInput.email || '' %>"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              class="form-input <%= validationErrors.find(e => e.path === 'subject') ? 'invalid' : '' %>"
+              value="<%= oldInput.subject || '' %>"
+            />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              name="message"
+              class="form-input <%= validationErrors.find(e => e.path === 'message') ? 'invalid' : '' %>"
+            >
+<%= oldInput.message || '' %></textarea
+            >
+          </div>
+          <button type="submit" class="form-button">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer.ejs') %>

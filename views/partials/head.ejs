@@ -6,10 +6,23 @@
     <title><%= pageTitle %></title>
     <link href="https://fonts.googleapis.com" rel="preconnect" />
     <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
-    <link href="styles/head.css" rel="stylesheet" />
-    <link href="styles/home.css" rel="stylesheet" />
-    <link href="styles/footer.css" rel="stylesheet" />
-  </head>
+    <link href="/styles/head.css" rel="stylesheet" />
+    <link href="/styles/home.css" rel="stylesheet" />
+    <link href="/styles/footer.css" rel="stylesheet" />
+    <link href="/styles/404.css" rel="stylesheet" />
+    <link href="/styles/services.css" rel="stylesheet" />
+    <link href="/styles/pricing.css" rel="stylesheet" />
+    <link href="/styles/tracking.css" rel="stylesheet" />
+    <link href="/styles/about.css" rel="stylesheet" />
+    <link href="/styles/contact.css" rel="stylesheet" />
+    <link href="/styles/addShipment.css" rel="stylesheet" />
+    <link href="/styles/client.css" rel="stylesheet" />
+    <link href="/styles/register.css" rel="stylesheet" />
+    <link href="/styles/shipment-success.css" rel="stylesheet" />
+    <link href="/styles/common-tables.css" rel="stylesheet" /> <!-- New common styles -->
+    <link href="/styles/learnMore.css" rel="stylesheet" />
+    <link href="/styles/helpCenter.css" rel="stylesheet" />
+</head>
   <body>
 <header class="site-header">
     <div class="header-container">
@@ -25,11 +38,24 @@
         </a>
         <nav class="main-nav">
             <a class="nav-link" href="/services">Services</a>
-            <a class="nav-link" href="#">Tracking</a>
-            <a class="nav-link" href="#">Pricing</a>
+            <a class="nav-link" href="/tracking">Tracking</a>
+            <!-- <a class="nav-link" href="/pricing">Pricing</a> -->
+            <a class="nav-link" href="/about">About Us</a>
+            <a class="nav-link" href="/contact">Contact Us</a>
         </nav>
-        <a class="client-login-btn" href="#">
-            Client Login
-        </a>
+        <div class="header-actions">
+            <% if (isLoggedIn) { %>
+                <a class="client-login-btn" href="/dashboard">Dashboard</a>
+                <% if (isHost) { %>
+                    <a class="client-login-btn add-customer-btn" href="/host/addShipment">Add Shipment</a>
+                    <a class="client-login-btn add-customer-btn" href="/host/messages">View Messages</a>
+                    <a class="client-login-btn add-customer-btn" href="/host/fleet-management">Fleet Mgmt</a>
+                <% } %>
+                <form action="/logout" method="POST">
+                    <button type="submit" class="client-login-btn logout-btn">Logout</button>
+                </form>
+            <% } else { %>
+                <a class="client-login-btn" href="/clientLogin"> Client Login </a>
+            <% } %>
         </div>
 </header>

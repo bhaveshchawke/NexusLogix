@@ -1,0 +1,253 @@
+/* === Tracking Section === */
+.tracking-section {
+  display: flex;
+  align-items: flex-start; /* Align to top */
+  justify-content: center;
+  min-height: 100vh;
+  padding: 8rem 2rem 6rem;
+  background: var(--background);
+}
+
+/* === Tracking Form Wrapper (when no results) === */
+.tracking-form-wrapper {
+  max-width: 700px;
+  width: 100%;
+  margin: 2rem auto;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 3rem;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  text-align: center;
+}
+
+.tracking-form-page {
+  display: flex;
+  gap: 10px;
+  margin-top: 2rem;
+}
+
+.tracking-form-page input {
+  flex-grow: 1;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 0.85rem 1rem;
+  font-size: 1rem;
+  color: var(--text-white);
+  transition: all 0.3s ease;
+}
+
+.tracking-form-page input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+.tracking-form-page button {
+  padding: 0.85rem 1.5rem;
+  background-image: linear-gradient(to right, #007bff, #0056b3);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tracking-form-page button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px var(--primary-glow);
+}
+
+.section-subheading.error {
+  color: #f87171; /* Brighter red for dark theme */
+  font-weight: bold;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #007bff;
+  font-weight: 500;
+}
+
+.tracking-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Headings */
+.section-heading {
+  font-size: 2rem;
+  text-align: center;
+  color: var(--text-white);
+  margin-bottom: 10px;
+}
+
+.section-subheading {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+}
+
+/* === Grid Layout === */
+.tracking-results-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 30px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+}
+
+/* === Map Container === */
+.tracking-map-container {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+/* === Status Panel === */
+.tracking-status-panel {
+  /* No extra background needed */
+}
+
+.status-header {
+  margin-bottom: 20px;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.status-header h3 {
+  font-size: 1.4rem;
+  margin-bottom: 5px;
+  color: var(--text-white);
+}
+
+.status-highlight {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.status-header p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+/* === Timeline === */
+.status-timeline {
+  list-style: none;
+  position: relative;
+  padding-left: 25px;
+  border-left: 2px solid var(--border-color);
+}
+
+.timeline-item {
+  margin-bottom: 25px;
+  position: relative;
+  padding-left: 35px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Timeline Dot/Icon */
+.timeline-icon {
+  position: absolute;
+  left: -21px; /* (35/2) + (border/2) */
+  top: 0;
+  background: var(--background);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Completed step */
+.timeline-item.completed .timeline-icon {
+  border: 3px solid #4ade80; /* green */
+}
+
+.timeline-item.completed strong {
+  color: #4ade80;
+}
+
+/* Active step */
+.timeline-item.active .timeline-icon {
+  border: 3px solid #facc15; /* yellow */
+}
+
+.timeline-item.active strong {
+  color: #facc15;
+}
+
+.timeline-item:not(.completed):not(.active) .timeline-icon {
+  border: 3px solid var(--border-color);
+}
+
+/* Timeline content */
+.timeline-content strong {
+  display: block;
+  font-size: 1.05rem;
+  margin-bottom: 4px;
+  color: aliceblue;
+}
+
+.timeline-content p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* === Responsive === */
+@media (max-width: 900px) {
+  .tracking-results-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* === Tracking Animation === */
+.tracking-animation {
+  margin: 1.5rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* === Responsive Tweaks === */
+@media (max-width: 768px) {
+  .tracking-results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tracking-map-container img {
+    max-height: 200px;
+  }
+
+  .tracking-form-wrapper {
+    padding: 2rem;
+  }
+
+  .tracking-form-page {
+    flex-direction: column;
+  }
+
+  .tracking-form-page input,
+  .tracking-form-page button {
+    width: 100%;
+  }
+}

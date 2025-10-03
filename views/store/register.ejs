@@ -1,0 +1,108 @@
+<%- include('../partials/head.ejs') %>
+
+<main>
+  <section class="form-section">
+    <div class="form-card anim-fade-up">
+      <!-- Header -->
+      <div class="form-header">
+        <h2 class="section-heading">Client Registration</h2>
+        <p class="section-subheading">Create your account to track shipments and manage orders.</p>
+      </div>
+
+      <% if (typeof errorMessage !== 'undefined' && errorMessage) { %>
+        <div class="error-message-box">
+          <%= errorMessage %>
+        </div>
+      <% } %>
+
+      <!-- Registration Form -->
+      <form action="/client-register" method="POST" class="user-form">
+        
+        <!-- Full Name -->
+        <div class="form-group">
+          <label for="fullName">Full Name</label>
+          <input 
+            type="text" 
+            id="fullName" 
+            name="fullName" 
+            class="form-input" 
+            placeholder="Enter your full name" 
+            value="<%= typeof oldInput !== 'undefined' ? oldInput.fullName : '' %>"
+          >
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input 
+            type="email" 
+            id="email" 
+            name="email" 
+            class="form-input" 
+            placeholder="Enter your email" 
+            value="<%= typeof oldInput !== 'undefined' ? oldInput.email : '' %>"
+          >
+        </div>
+
+        <!-- Phone -->
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input 
+            type="tel" 
+            id="phone" 
+            name="phone" 
+            class="form-input" 
+            placeholder="Enter your phone number" 
+            value="<%= typeof oldInput !== 'undefined' ? oldInput.phone : '' %>"
+          >
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input 
+            type="password" 
+            id="password" 
+            name="password" 
+            class="form-input" 
+            placeholder="Create a password" 
+            required
+          >
+        </div>
+
+        <!-- Confirm Password -->
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input 
+            type="password" 
+            id="confirmPassword" 
+            name="confirmPassword" 
+            class="form-input" 
+            placeholder="Re-enter your password" 
+            required
+          >
+        </div>
+
+        <!-- Terms and Conditions -->
+        <div class="form-options">
+          <label class="checkbox-label">
+            <input type="checkbox" name="terms" required>
+            I agree to the <a href="/terms" class="link">Terms & Conditions</a>
+          </label>
+        </div>
+
+        <!-- Button -->
+        <button type="submit" class="form-button">Register</button>
+
+        <!-- Divider -->
+        <div class="form-divider"></div>
+
+        <!-- Login Redirect -->
+        <p class="form-footer-text">
+          Already have an account? <a href="/client-login">Login Here</a>
+        </p>
+      </form>
+    </div>
+  </section>
+</main>
+<%- include('../partials/footer.ejs') %>

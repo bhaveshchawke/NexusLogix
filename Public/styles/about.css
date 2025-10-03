@@ -1,0 +1,160 @@
+/* --- Professional About Us Page Styles --- */
+
+/* Section 1: Hero Introduction */
+
+.about-hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 50vh;
+    padding: 10rem 2rem 4rem;
+    background-color: var(--background-dark);
+}
+
+.about-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, var(--background-dark) 5%, rgba(10, 10, 15, 0.6) 100%);
+}
+
+.about-hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 800px;
+}
+
+.about-hero-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    color: var(--text-white);
+}
+
+.about-hero-subtitle {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    margin-top: 1.5rem;
+    line-height: 1.7;
+}
+
+/* Section 2: Our Story */
+.about-story {
+    padding: 6rem 2rem;
+    background-color: #111116; /* Slightly different dark shade */
+}
+
+.story-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.story-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-color);
+}
+
+.story-content .section-heading {
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.story-content p {
+    color: var(--text-muted);
+    line-height: 1.8;
+    font-size: 1rem;
+}
+
+/* Section 3: Meet the Team */
+.about-team {
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+.team-container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.team-member {
+    position: relative;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease;
+}
+
+.team-member:hover {
+    transform: translateY(-10px);
+}
+
+.team-member img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.member-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to top, rgba(10, 10, 15, 0.9) 0%, transparent 100%);
+    text-align: left;
+}
+
+.member-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-white);
+}
+
+.member-role {
+    font-size: 0.9rem;
+    color: var(--primary);
+}
+
+/* Responsive Styles for About Page */
+@media (max-width: 900px) {
+    .story-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-hero {
+        padding: 8rem 1rem 3rem;
+    }
+
+    .about-hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .about-story,
+    .about-team {
+        padding: 4rem 1rem;
+    }
+
+    .story-container {
+        gap: 2rem;
+    }
+
+    .member-info {
+        padding: 1rem;
+    }
+}

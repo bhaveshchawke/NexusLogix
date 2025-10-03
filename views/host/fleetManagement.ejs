@@ -1,0 +1,146 @@
+<%- include('../partials/head.ejs') %>
+<link rel="stylesheet" href="/styles/fleetManagement.css">
+
+<main>
+    <section class="fleet-section">
+        <div class="fleet-container">
+            <h1 class="fleet-title">Fleet Management</h1>
+            <p class="fleet-subtitle">Manage your vehicles and drivers efficiently.</p>
+
+            <div class="fleet-actions">
+                <!-- In a real app, these would open modals -->
+            </div>
+
+            <div class="fleet-grid">
+                <!-- Add New Vehicle Form -->
+                <div class="fleet-form-card">
+                    <h3>Add New Vehicle</h3>
+                    <form action="/host/add-vehicle" method="POST" class="fleet-form">
+                        <div class="form-group">
+                            <label for="vehicleId">Vehicle Number (e.g., MH12AB1234)</label>
+                            <input type="text" id="vehicleId" name="vehicleId" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="model">Vehicle Model (e.g., Honda Activa)</label>
+                            <input type="text" id="model" name="model" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Vehicle Type</label>
+                            <select id="type" name="type" class="form-input">
+                                <option value="Bike">Bike</option>
+                                <option value="Van">Van</option>
+                                <option value="Truck">Truck</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="form-button">Add Vehicle</button>
+                    </form>
+                </div>
+
+                <!-- Add New Driver Form -->
+                <div class="fleet-form-card">
+                    <h3>Add New Driver</h3>
+                    <form action="/host/add-driver" method="POST" class="fleet-form">
+                        <div class="form-group">
+                            <label for="fullName">Driver's Full Name</label>
+                            <input type="text" id="fullName" name="fullName" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="licenseNumber">Driving License Number</label>
+                            <input type="text" id="licenseNumber" name="licenseNumber" class="form-input" required>
+                        </div>
+                        <button type="submit" class="form-button">Add Driver</button>
+                    </form>
+                </div>
+
+                <!-- Assign Driver Form -->
+                <div class="fleet-form-card">
+                    <h3>Assign Driver to Vehicle</h3>
+                    <form action="/host/assign-driver" method="POST" class="fleet-form">
+                        <div class="form-group">
+                            <label for="vehicleId-assign">Select Vehicle</label>
+                            <select id="vehicleId-assign" name="vehicleId" class="form-input">
+                                <% vehicles.forEach(vehicle => { %>
+                                    <% if (!vehicle.assignedDriver) { %>
+                                        <option value="<%= vehicle._id %>"><%= vehicle.vehicleId %> - <%= vehicle.model %></option>
+                                    <% } %>
+                                <% }); %>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="driverId-assign">Select Available Driver</label>
+                            <select id="driverId-assign" name="driverId" class="form-input">
+                                <% availableDrivers.forEach(driver => { %>
+                                    <option value="<%= driver._id %>"><%= driver.fullName %></option>
+                                <% }); %>
+                            </select>
+                        </div>
+                        <button type="submit" class="form-button">Assign Driver</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Vehicles Table -->
+            <div class="fleet-table-container">
+                <h2>Your Fleet (<%= vehicles.length %>)</h2>
+                <div class="table-wrapper">
+                    <table class="fleet-table">
+                        <thead>
+                            <tr>
+                                <th>Vehicle ID</th>
+                                <th>Type</th>
+                                <th>Status</th>
+                                <th>Assigned Driver</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% vehicles.forEach(vehicle => { %>
+                                <tr>
+                                    <td><%= vehicle.vehicleId %></td>
+                                    <td><%= vehicle.type %></td>
+                                    <td><span class="status-badge status-<%= vehicle.status.toLowerCase() %>"><%= vehicle.status %></span></td>
+                                    <td><%= vehicle.assignedDriver ? vehicle.assignedDriver.fullName : 'N/A' %></td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Drivers Table -->
+            <div class="fleet-table-container">
+                <h2>Your Drivers (<%= drivers.length %>)</h2>
+                <div class="table-wrapper">
+                    <table class="fleet-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Phone</th>
+                                <th>License No.</th>
+                                <th>Status</th>
+                                <th>Assigned Vehicle</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% drivers.forEach(driver => { %>
+                                <tr>
+                                    <td><%= driver.fullName %></td>
+                                    <td><%= driver.phone %></td>
+                                    <td><%= driver.licenseNumber %></td>
+                                    <td><span class="status-badge status-<%= driver.status.toLowerCase() %>"><%= driver.status %></span></td>
+                                    <td><%= driver.assignedVehicle ? driver.assignedVehicle.vehicleId : 'N/A' %></td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>
+
+<%- include('../partials/footer.ejs') %>

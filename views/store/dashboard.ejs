@@ -1,0 +1,51 @@
+<%- include('../partials/head.ejs') %>
+<link rel="stylesheet" href="/styles/dashboard.css"> <!-- Specific dashboard styles -->
+
+<main>
+    <section class="fleet-section">
+        <div class="fleet-container anim-fade-up">
+            <h1 class="fleet-title">Welcome, <%= user.fullName %>!</h1>
+            <p class="fleet-subtitle">Here are your recent shipments.</p>
+
+            <% if (shipments.length > 0) { %>
+                <div class="fleet-table-container">
+                    <h2>Your Shipments (<%= shipments.length %>)</h2>
+                    <table class="fleet-table">
+                        <thead>
+                            <tr>
+                                <th>Tracking ID</th>
+                                <th>Recipient</th>
+                                <th>Status</th>
+                                <th>Created On</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% shipments.forEach(shipment => { %>
+                                <tr>
+                                    <td><%= shipment.shipmentId %></td>
+                                    <td><%= shipment.fullName %></td>
+                                    <td><%= shipment.status %></td>
+                                    <td><%= new Date(shipment.createdAt).toLocaleDateString() %></td>
+                                    <td><a href="/tracking?id=<%= shipment.shipmentId %>" class="table-button">Track</a></td>
+                                </tr>
+                            <% }); %>
+                        </tbody>
+                    </table>
+                </div>
+            <% } else { %>
+                <div class="tracking-form-wrapper">
+                    <h2 class="section-heading">No Shipments Yet</h2>
+                    <p class="section-subheading">You haven't created any shipments. Get started now!</p>
+                    <% if (isHost) { %>
+                        <a href="/host/addShipment" class="action-button">Create First Shipment</a>
+                    <% } else { %>
+                        <p class="section-subheading">Contact us to start shipping with Urban Express.</p>
+                    <% } %>
+                </div>
+            <% } %>
+        </div>
+    </section>
+</main>
+
+<%- include('../partials/footer.ejs') %>

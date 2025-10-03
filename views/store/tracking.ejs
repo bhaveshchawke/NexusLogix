@@ -1,0 +1,118 @@
+<%- include('../partials/head.ejs') %>
+
+<main>
+  <section class="tracking-section">
+    <div class="tracking-container">
+      <% if (typeof shipment === 'undefined' && typeof notFoundError ===
+      'undefined') { %>
+      <!-- State 1: Show Tracking Form -->
+      <div class="tracking-form-wrapper anim-fade-up">
+        <h2 class="section-heading">Track Your Shipment</h2>
+        <p class="section-subheading">
+          Enter your tracking ID below to see the live status.
+        </p>
+
+        <div class="tracking-animation">
+          <dotlottie-wc
+            src="https://lottie.host/b7dae6fd-b03d-4382-a513-8eec15d9fc43/hcvEl934Xj.lottie"
+            loop
+            autoplay
+          >
+          </dotlottie-wc>
+        </div>
+
+        <form action="/tracking" method="POST" class="tracking-form-page">
+          <input
+            type="text"
+            name="id"
+            placeholder="Enter your Tracking ID (e.g., 66a9f...)"
+            required
+          />
+          <button type="submit">Track Now</button>
+        </form>
+      </div>
+
+      <% } else { %>
+      <!-- State 2: Show Tracking Results -->
+      <h2 class="section-heading anim-fade-up">Tracking Details</h2>
+
+      <% if (typeof notFoundError !== 'undefined' && notFoundError) { %>
+      <p class="section-subheading error anim-fade-up"><%= notFoundError %></p>
+      <a href="/tracking" class="back-link anim-fade-up">Try another ID</a>
+      <% } else { %>
+      <p class="section-subheading anim-fade-up" style="animation-delay: 0.2s">
+        Live status for your shipment ID:
+        <strong><%= shipment.shipmentId %></strong>
+      </p>
+
+      <div
+        class="tracking-results-grid anim-fade-up"
+        style="animation-delay: 0.4s"
+      >
+        <div class="tracking-map-container">
+          <dotlottie-wc
+            src="https://lottie.host/43257cc4-cba8-4d7f-b4cc-0563cd9890a3/TWmq6IOH9w.lottie"
+            autoplay
+            loop
+          ></dotlottie-wc>
+        </div>
+
+        <div class="tracking-status-panel">
+          <div class="status-header">
+            <h3>
+              Current Status:
+              <span class="status-highlight"><%= shipment.status %></span>
+            </h3>
+            <p>
+              Last updated at: <%= new Date(shipment.createdAt).toLocaleString()
+              %>
+            </p>
+          </div>
+
+          <% const statusLevels = { 'Shipment Created': 1, 'In Transit': 2, 'Out for Delivery': 3, 'Delivered': 4 }; %>
+          <% const currentLevel = statusLevels[shipment.status] || 1; %>
+
+          <ul class="status-timeline">
+            <li
+              class="timeline-item <%= (currentLevel >= 4) ? 'completed' : '' %>"
+            >
+              <div class="timeline-icon">🚚</div>
+              <div class="timeline-content">
+                <strong>Delivered</strong>
+                <p>Your package has been delivered.</p>
+              </div>
+            </li>
+            <li
+              class="timeline-item <%= (currentLevel === 3) ? 'active' : (currentLevel > 3 ? 'completed' : '') %>"
+            >
+              <div class="timeline-icon">📦</div>
+              <div class="timeline-content">
+                <strong>Out for Delivery</strong>
+                <p>The package is on its way to the final destination.</p>
+              </div>
+            </li>
+            <li
+              class="timeline-item <%= (currentLevel === 2) ? 'active' : (currentLevel > 2 ? 'completed' : '') %>"
+            >
+              <div class="timeline-icon">✈️</div>
+              <div class="timeline-content">
+                <strong>In Transit</strong>
+                <p>The package is moving between facilities.</p>
+              </div>
+            </li>
+            <li class="timeline-item <%= (currentLevel >= 1) ? 'completed' : '' %>">
+              <div class="timeline-icon">✅</div>
+              <div class="timeline-content">
+                <strong>Shipment Created</strong>
+                <p>The shipment has been registered in our system.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <% } %> <% } %>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer.ejs') %>

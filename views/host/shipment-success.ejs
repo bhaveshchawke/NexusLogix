@@ -1,0 +1,22 @@
+<%- include('../partials/head.ejs') %>
+
+<main>
+  <section class="success-section">
+    <div class="success-card anim-fade-up">
+      <h2 class="success-title">🎉 Shipment Created Successfully!</h2>
+      <p class="success-message">
+        Your shipment has been registered successfully.  
+        Use the tracking ID below to track your package.
+      </p>
+
+      <div class="shipment-id-box">
+        <span class="label">Your Shipment ID</span>
+        <h1 class="shipment-id"><%= shipmentId %></h1>
+      </div>
+
+      <a href="/" class="home-btn">Go Back to Dashboard</a>
+    </div>
+  </section>
+</main>
+
+<%- include('../partials/footer.ejs') %>

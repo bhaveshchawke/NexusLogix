@@ -1,0 +1,28 @@
+<%- include('../partials/head.ejs') %>
+
+<main class="help-center-main">
+    <section class="help-hero">
+        <div class="container">
+            <h1 class="help-hero-title">Help Center</h1>
+            <p class="help-hero-subtitle">How can we help you today?</p>
+            <div class="search-bar">
+                <input type="search" placeholder="Search for topics, questions...">
+                <button type="submit">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section container">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-list">
+            <!-- You can add FAQ items here later -->
+            <div class="faq-item">
+                <h3 class="faq-question">How do I track my shipment?</h3>
+                <p class="faq-answer">You can track your shipment by visiting our <a href="/tracking">Tracking Page</a> and entering the shipment ID provided to you.</p>
+            </div>
+            <!-- Add more FAQs as needed -->
+        </div>
+    </section>
+</main>
+
+<%- include('../partials/footer.ejs') %>

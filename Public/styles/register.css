@@ -1,0 +1,13 @@
+/* Link inside terms */
+.form-options .link {
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.form-options .link:hover {
+  text-decoration: underline;
+}
+.error-message-box{
+  color: red;
+}

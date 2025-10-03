@@ -1,0 +1,74 @@
+/* --- Shipment Success Page Styles --- */
+.success-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+}
+
+.success-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  padding: 3rem 2rem;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 6px 25px rgba(0,0,0,0.4);
+}
+
+.success-title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #4ade80; /* green */
+  margin-bottom: 1rem;
+}
+
+.success-message {
+  font-size: 1rem;
+  color: #e2e8f0;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+.shipment-id-box {
+  background: rgba(0, 0, 0, 0.4);
+  border: 2px dashed #4ade80;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.shipment-id-box .label {
+  display: block;
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  margin-bottom: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.shipment-id {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #facc15; /* yellow */
+  letter-spacing: 2px;
+}
+
+.home-btn {
+  display: inline-block;
+  padding: 0.8rem 1.8rem;
+  border-radius: 0.5rem;
+  background: linear-gradient(to right, #007BFF, #0056b3);
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.home-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}

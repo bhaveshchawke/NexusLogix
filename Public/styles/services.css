@@ -1,0 +1,100 @@
+/* --- Services Section Styles --- */
+
+.services-section {
+    padding: 8rem 2rem; /* Section mein upar-neeche space */
+    padding-top: 10rem; /* Header ke neeche extra space ke liye */
+    text-align: center;
+}
+
+.services-container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.section-heading {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-white);
+    margin-bottom: 1rem;
+}
+
+.section-subheading {
+    font-size: 1.125rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 4rem; /* Heading ke neeche aur cards ke upar space */
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem; /* Cards ke beech mein space */
+}
+
+.service-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 2.5rem;
+    text-align: left;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+    box-shadow: 0 8px 30px var(--primary-glow);
+}
+
+.service-icon {
+    height: 60px;
+    margin-bottom: 1.6rem;
+    padding: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.service-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-white);
+    margin-bottom: 1rem;
+    min-height: 50px; /* Titles ko ek line mein rakhne ke liye */
+}
+
+.service-description {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.661);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.service-link {
+    font-weight: 600;
+    color: var(--primary);
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.service-link:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .services-section {
+        padding: 4rem 1rem;
+    }
+
+    .section-heading {
+        font-size: 2rem;
+    }
+
+    .service-card {
+        padding: 1.5rem;
+    }
+
+    .service-icon {
+        padding: 20px;
+    }
+}

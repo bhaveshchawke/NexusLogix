@@ -1,0 +1,91 @@
+<%- include('../partials/head.ejs') %>
+
+<main>
+    <section class="fleet-section">
+        <div class="fleet-container anim-fade-up">
+            <h1 class="fleet-title">Fleet Management Dashboard</h1>
+            <p class="fleet-subtitle">Real-time overview of all vehicles and drivers.</p>
+
+            <div class="fleet-actions">
+                <a href="#" class="action-button">Add New Vehicle</a>
+                <a href="#" class="action-button">Assign Driver</a>
+            </div>
+
+            <!-- Vehicles Table -->
+            <div class="fleet-table-container">
+                <h2>Active Vehicles (5)</h2>
+                <table class="fleet-table">
+                    <thead>
+                        <tr>
+                            <th>Vehicle ID</th>
+                            <th>Type</th>
+                            <th>Driver</th>
+                            <th>Status</th>
+                            <th>Location</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>UE-BIKE-01</td>
+                            <td>Motorcycle</td>
+                            <td>Rohan Sharma</td>
+                            <td>On-route</td>
+                            <td>Andheri, Mumbai</td>
+                            <td><a href="#" class="table-button">View Details</a></td>
+                        </tr>
+                        <tr>
+                            <td>UE-VAN-03</td>
+                            <td>Delivery Van</td>
+                            <td>Priya Singh</td>
+                            <td>Idle</td>
+                            <td>Warehouse</td>
+                            <td><a href="#" class="table-button">View Details</a></td>
+                        </tr>
+                        <tr>
+                            <td>UE-BIKE-05</td>
+                            <td>Motorcycle</td>
+                            <td>Amit Kumar</td>
+                            <td>On-route</td>
+                            <td>Bandra, Mumbai</td>
+                            <td><a href="#" class="table-button">View Details</a></td>
+                        </tr>
+                        <!-- Add more dummy data as needed -->
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Drivers Table -->
+            <div class="fleet-table-container">
+                <h2>Available Drivers (8)</h2>
+                <table class="fleet-table">
+                    <thead>
+                        <tr>
+                            <th>Driver Name</th>
+                            <th>Status</th>
+                            <th>Vehicle Assigned</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sunita Patil</td>
+                            <td>Available</td>
+                            <td>None</td>
+                            <td><a href="#" class="table-button">Assign Vehicle</a></td>
+                        </tr>
+                        <tr>
+                            <td>Vikram Rathod</td>
+                            <td>On Break</td>
+                            <td>UE-VAN-02</td>
+                            <td><a href="#" class="table-button">View Details</a></td>
+                        </tr>
+                        <!-- Add more dummy data as needed -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</main>
+
+<%- include('../partials/footer.ejs') %>

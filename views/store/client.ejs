@@ -1,0 +1,70 @@
+<%- include('../partials/head.ejs') %>
+
+<main>
+  <section class="form-section">
+    <div class="form-card anim-fade-up">
+      <!-- Header -->
+      <div class="form-header">
+        <h2 class="section-heading">Client Login</h2>
+        <p class="section-subheading">Login to track your shipments and manage your orders.</p>
+      </div>
+
+      <% if (typeof errorMessage !== 'undefined' && errorMessage) { %>
+        <div class="error-message-box">
+          <%= errorMessage %>
+        </div>
+      <% } %>
+
+      <!-- Login Form -->
+      <form action="/client-login" method="POST" class="user-form">
+        
+        <!-- Email -->
+        <div class="form-group">
+          <label for="clientEmail">Email Address</label>
+          <input 
+            type="email" 
+            id="clientEmail" 
+            name="clientEmail" 
+            class="form-input" 
+            placeholder="Enter your email" 
+            value="<%= typeof oldInput !== 'undefined' ? oldInput.clientEmail : '' %>"
+          >
+        </div>
+
+        <!-- Password -->
+        <div class="form-group">
+          <label for="clientPassword">Password</label>
+          <input 
+            type="password" 
+            id="clientPassword" 
+            name="clientPassword" 
+            class="form-input" 
+            placeholder="Enter your password" 
+            required
+          >
+        </div>
+
+        <!-- Forgot password + Remember me -->
+        <div class="form-options">
+          <label class="checkbox-label">
+            <input type="checkbox" name="rememberMe">
+            Remember Me
+          </label>
+          <a href="/forgot-password" class="forgot-link">Forgot Password?</a>
+        </div>
+
+        <!-- Button -->
+        <button type="submit" class="form-button">Login</button>
+
+        <!-- Divider -->
+        <div class="form-divider"></div>
+
+        <!-- Signup Link -->
+        <p class="form-footer-text">
+          Don’t have an account? <a href="/register">Register Here</a>
+        </p>
+      </form>
+    </div>
+  </section>
+</main>
+<%- include('../partials/footer.ejs') %>
