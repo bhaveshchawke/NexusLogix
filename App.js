@@ -9,9 +9,6 @@ const storeRoutes = require('./Routes/storeRouter');
 const hostRoutes = require('./Routes/hostRoutes');
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
-
-
-
 const MONGO_URL = process.env.MONGO_URL;
 
 

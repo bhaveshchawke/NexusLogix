@@ -198,7 +198,8 @@ exports.postClientRegister =[
       phone, 
       password: hashedPassword,
       // Set role to 'host' if the email matches the host email from .env
-      role: email === process.env.HOST_EMAIL ? 'host' : 'client'
+      // A more robust solution would be a dedicated admin panel to assign roles.
+      role: email === process.env.HOST_EMAIL ? 'host' : 'client' 
     });
     
     await client.save();
@@ -230,7 +231,9 @@ exports.postClientLogin = async (req, res, next) => {
       req.session.isLoggedIn = true;
       req.session.user = client; // Storing the whole user object might be too much, but ok for now.
       // Check role from database instead of hardcoding email
-      req.session.isHost = client.role === 'host';
+      if (client.role === 'host') {
+        req.session.isHost = true;
+      }
 
       return req.session.save(err => {
         if (err) console.log(err);
